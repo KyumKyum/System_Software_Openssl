@@ -28,12 +28,19 @@ pub fn generate_hash(data: &[u8], mut binary: String) -> String {
     let mut hash = sha::sha256(data);
     //* Basic Function: Generate SHA256 hash, convert into binary. */
     //*Enable Double Hash  - Uncomment this*/
-    //hash = sha::sha256(&hash);
+    hash = sha::sha256(&hash);
 
     for x in hash {
         binary += &format!("{:08b }", x);
     }
 
+    // let double_hash = sha::sha256(&binary.as_bytes());
+
+    // binary = "".to_string();
+
+    // for x in double_hash {
+    //     binary += &format!("{:08b }", x);
+    // }
     return binary;
 }
 
